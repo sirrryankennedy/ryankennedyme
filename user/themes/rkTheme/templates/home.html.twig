@@ -6,7 +6,6 @@
 	    <div class="slide-content">
 	      <div class="container">
 	        <h6 class="mb-0">Hello, my name is Ryan Kennedy</h6>
-	        <!-- Text rotator-->
 	        <div id="text-rotator" class="flexslider mt-15 mb-15">
 	          <ul class="slides">
 	            <li>
@@ -20,7 +19,6 @@
 	            </li>
 	          </ul>
 	        </div>
-	        <!-- end of text rotator                    -->
 	        <ul class="social-list">
 	          <li><a target="_blank" href="#"><i class="ti-facebook"></i></a>
 	          </li>
@@ -35,7 +33,6 @@
 	          <li><a target="_blank" href="#"><i class="ti-github"></i></a>
 	          </li>
 	        </ul>
-	        <!-- end of social icons-->
 	      </div>
 	    </div>
 	  </div>
@@ -52,11 +49,8 @@
 	          {{ page.content }}
 	        </div>
 	      </div>
-	      <!-- end of row-->
 	    </div>
-	    <!-- end of section content-->
 	  </div>
-	  <!-- end of container          -->
 	</section>
 
 	<section id="experience">
@@ -76,9 +70,7 @@
 	          </div>
 	        </div>
 	      </div>
-	      <!-- end of side background image-->
 	    </div>
-	    <!-- end of row-->
 	  </div>
 	  <div class="container">
 	    <div class="row">
@@ -89,7 +81,6 @@
 	          <li role="presentation"><a href="#skills-tab" role="tab" data-toggle="tab">Skills</a>
 	          </li>
 	        </ul>
-	        <!-- end of nav tabs-->
 	        <div class="tab-content">
 	          <div id="method-tab" role="tabpanel" class="tab-pane fade in active">
 	            <p class="alt-paragraph mb-15">Consectetur adipisicing elit. Nisi quibusdam adipisci dignissimos nihil cumque sapiente dolorem, laborum.</p>
@@ -124,7 +115,6 @@
 	            </div>
 	          </div>
 	        </div>
-	        <!-- end of tab content-->
 	      </div>
 	    </div>
 	  </div>
@@ -139,7 +129,7 @@
 	    <div class="section-content">
 	      <div class="row">
 	        <div class="col-md-8 col-md-offset-2">
-        	{% for p in page.find('/content').children if p != page %}
+        	{% for p in page.find('/content').children.order('date', 'desc').slice(0, 4) if p != page %}
 	          <div class="blog-post">
 	            <div class="post-body">
 	              <h3 class="serif"><a href="{{ p.url }}">{{ p.title }}</a></h3>
@@ -148,19 +138,16 @@
 	              <div class="post-info upper"><a href="{{ p.url }}">Read More</a><span class="pull-right black-text">{{ p.date|date("j F") }} {{ p.date|date("Y") }}</span>
 	              </div>
 	            </div>
-	            <!-- end of blog post-->
 	          </div>
           	{% endfor %}
 	        </div>
 	      </div>
-	      <!-- end of row-->
 	      <div class="clearfix"></div>
 	      <div class="mt-25">
 	        <p class="text-center"><a href="{{ base_url }}/content" class="btn btn-color-out">View More Articles</a>
 	        </p>
 	      </div>
 	    </div>
-	    <!-- end of container-->
 	  </div>
 	</section>
 
@@ -181,7 +168,6 @@
 	          </div>
 	        </div>
 	      </div>
-	      <!-- end of side background image-->
 	      <div class="col-md-6 col-md-offset-6 col-sm-8 col-sm-offset-4">
 	        <div class="services">
 	          <div class="row">
@@ -191,7 +177,6 @@
 	                <hr>
 	                <p class="alt-paragraph">Facilis doloribus illum quis, expedita mollitia voluptate non iure, perspiciatis repellat eveniet volup.</p>
 	              </div>
-	              <!-- end of service-->
 	            </div>
 	            <div class="col-sm-6 border-bottom">
 	              <div class="service"><i class="icon-layers"></i><span class="back-icon"><i class="icon-layers"></i></span>
@@ -199,7 +184,6 @@
 	                <hr>
 	                <p class="alt-paragraph">Advanced scripts to automated basic and advanced tasks, such as website deployment, financial statements and article editing.</p>
 	              </div>
-	              <!-- end of service-->
 	            </div>
 	            <div class="col-sm-6 border-bottom border-right">
 	              <div class="service"><i class="icon-mobile"></i><span class="back-icon"><i class="icon-mobile"></i></span>
@@ -207,7 +191,6 @@
 	                <hr>
 	                <p class="alt-paragraph">Modern and minimalistic website design, efficient deployment and server maintenance.</p>
 	              </div>
-	              <!-- end of service-->
 	            </div>
 	            <div class="col-sm-6 border-bottom">
 	              <div class="service"><i class="icon-globe"></i><span class="back-icon"><i class="icon-globe"></i></span>
@@ -215,14 +198,11 @@
 	                <hr>
 	                <p class="alt-paragraph">Aliquid repellat facilis quis. Sequi excepturi quis dolorem eligendi deleniti fuga rerum itaque.</p>
 	              </div>
-	              <!-- end of service-->
 	            </div>
 	          </div>
 	        </div>
-	        <!-- end of row-->
 	      </div>
 	    </div>
-	    <!-- end of row -->
 	  </div>
 	</section>
 
@@ -232,6 +212,7 @@
 	      <div class="col-md-6">
 	        <div class="title m-0 txt-xs-center txt-sm-center">
 	          <h2 class="upper">Selected Works<span class="red-dot"></span></h2>
+	          <a href="{{ base_url }}/portfolio"><h4 class="upper">View all projects</h4>
 	          <hr>
 	        </div>
 	      </div>
@@ -243,10 +224,8 @@
 	          <li data-filter=".automation">Automation</li>
 	          <li data-filter=".video">Video</li>
 	        </ul>
-	        <!-- end of portfolio filters-->
 	      </div>
 	    </div>
-	    <!-- end of row-->
 	  </div>
 	  <div class="section-content pb-0">
 	    <div id="works" class="four-col wide mt-50">
@@ -268,7 +247,6 @@
 	      </div>
       	{% endfor %}
 	    </div>
-	    <!-- end of portfolio grid-->
 	  </div>
 	</section>
 
