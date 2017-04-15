@@ -59,7 +59,7 @@
               
           </div>
           {% if config.plugins.pagination.enabled %}
-              {% include 'partials/pagination.html.twig' with {'base_url':page.url, 'pagination':collection.params.pagination} %}
+              {% include 'partials/custom_pagination.html.twig' with {'base_url':page.url, 'pagination':collection.params.pagination} %}
           {% endif %}
         </div>
 		  {% include 'partials/sidebar.html.twig' with {'blog':page} %}
