@@ -1,0 +1,135 @@
+{% extends 'partials/base.html.twig' %}
+{% block content %}
+
+{% set portfolio_collection = page.collection() %}
+
+<section class="page-title parallax">
+  <div data-parallax="scroll" data-image-src="{{ url('theme://images/bg/20.jpg') }}" class="parallax-bg"></div>
+  <div class="parallax-overlay">
+    <div class="centrize">
+      <div class="v-center">
+        <div class="container">
+          <div class="title center">
+            <h1 class="upper">My Portfolio<span class="red-dot"></span></h1>
+            <h4>Collection of projects by Ryan Kennedy.</h4>
+            <hr>
+          </div>
+        </div>
+        <!-- end of container-->
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <ul id="filters">
+      <li data-filter="*" class="active">All</li>
+      <li data-filter=".branding">Branding</li>
+      <li data-filter=".graphic">Graphic</li>
+      <li data-filter=".automation">Automation</li>
+      <li data-filter=".video">Video</li>
+    </ul>
+    <!-- end of portfolio filters-->
+    <div id="works" class="three-col">
+    {% for p in portfolio_collection %}
+      <div class="work-item{% for category in p.taxonomy.category %} {{ category }} {% endfor %}">
+        <div class="work-detail">
+          <a href="{{ p.url }}">
+            <img src="{{ url('theme://images/portfolio/1.jpg') }}" alt="">
+            <div class="work-info">
+              <div class="centrize">
+                <div class="v-center">
+                  <h3>{{ p.title }}</h3>
+                  <p>{% for category in p.taxonomy.category %}{{ category }} {% endfor %}</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+      <div class="work-item graphic printing">
+        <div class="work-detail">
+          <a href="portfolio-single-1.html">
+            <img src="{{ url('theme://images/portfolio/1.jpg') }}" alt="">
+            <div class="work-info">
+              <div class="centrize">
+                <div class="v-center">
+                  <h3>Sweet Lane</h3>
+                  <p>Graphic, Printing</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="work-item printing branding">
+        <div class="work-detail">
+          <a href="portfolio-single-1.html">
+            <img src="{{ url('theme://images/portfolio/1.jpg') }}" alt="">
+            <div class="work-info">
+              <div class="centrize">
+                <div class="v-center">
+                  <h3>Jeff Burger</h3>
+                  <p>Printing, Branding</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="work-item video graphic">
+        <div class="work-detail">
+          <a href="portfolio-single-1.html">
+            <img src="{{ url('theme://images/portfolio/1.jpg') }}" alt="">
+            <div class="work-info">
+              <div class="centrize">
+                <div class="v-center">
+                  <h3>Juice Meds</h3>
+                  <p>Video, Graphic</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="work-item branding graphic">
+        <div class="work-detail">
+          <a href="portfolio-single-1.html">
+            <img src="{{ url('theme://images/portfolio/1.jpg') }}" alt="">
+            <div class="work-info">
+              <div class="centrize">
+                <div class="v-center">
+                  <h3>Prisma</h3>
+                  <p>Graphic, Branding</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="work-item printing graphic">
+        <div class="work-detail">
+          <a href="portfolio-single-1.html">
+            <img src="{{ url('theme://images/portfolio/1.jpg') }}" alt="">
+            <div class="work-info">
+              <div class="centrize">
+                <div class="v-center">
+                  <h3>Delirio Tropical</h3>
+                  <p>Printing, Graphic</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- end of portfolio grid-->
+  </div>
+</section>
+{% block contact %}
+    <section id="contact">
+        {% include "partials/contact.html.twig" %}
+    </section>
+{% endblock %}
+{% endblock %}

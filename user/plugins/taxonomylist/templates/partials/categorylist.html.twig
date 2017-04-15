@@ -1,0 +1,11 @@
+{% set taxlist = taxonomylist.get() %}
+
+{% if taxlist %}
+<span class="tags">
+    {% set category = grav.uri.params("category", true) %}
+    {% for tax,value in taxlist['category'] %}
+    {% set current_page = (tax == category) ? 'active' : '' %}
+        <a class="{{ active }}" href="{{ base_url }}/category{{ config.system.param_sep }}{{ tax|e('url') }}">{{ tax|capitalize }}</a>
+    {% endfor %}
+</span>
+{% endif %}

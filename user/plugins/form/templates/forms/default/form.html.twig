@@ -1,0 +1,113 @@
+{% if form.message %}
+    {% if form.inline_errors and form.messages %}
+        <div class="alert notices {{ form.message_color ?: 'green' }}"><p>{{ "FORM.VALIDATION_FAIL"|t|raw }}</p></div>
+    {% else %}
+        <div class="alert notices {{ form.message_color ?: 'green' }}"><p>{{ form.message|raw }}</p></div>
+    {% endif %}
+{% endif %}
+{% set scope = scope ?: 'data.' %}
+{% set multipart = '' %}
+{% set method = form.method|upper|default('POST') %}
+
+{% for field in form.fields %}
+    {% if (method == 'POST' and field.type == 'file') %}
+        {% set multipart = ' enctype="multipart/form-data"' %}
+    {% endif %}
+{% endfor %}
+
+{% set action = form.action ? base_url ~ form.action : base_url ~ page.route ~ uri.params %}
+
+{% if (action == base_url_relative) %}
+    {% set action = base_url_relative ~ '/' ~ page.slug %}
+{% endif %}
+
+<div class="container">
+  <div class="title center"><i class="icon-envelope"></i>
+  <h3>Contact Me<span class="red-dot"></span></h3>
+  <hr>
+  </div>
+  <div class="section-content">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="contact-form">
+          <form name="contact-form"
+          action="{{ action }}"
+          method="{{ method }}"{{ multipart }}
+          {% if form.id %}id="{{ form.id }}"{% endif %}
+          {% block form_classes %}
+          {% if form.classes %}class="{{ form.classes }}"{% endif %}
+          {% endblock %} 
+          >
+
+            {% block inner_markup_fields_start %}{% endblock %}
+
+            <div class="form-group">
+              <div class="form-data" data-grav-field="text" data-grav-disabled="true" data-grav-default="null">
+                <div class="form-input-wrapper ">             
+                  <input name="data[name]" value="" type="text" autofocus="autofocus" placeholder="Your Name" data-required="true" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-data" data-grav-field="text" data-grav-disabled="true" data-grav-default="null">
+                <div class="form-input-wrapper ">  
+                  <input name="data[email]" value="" type="email" placeholder="Your Email" data-required="true" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-data" data-grav-field="text" data-grav-disabled="true" data-grav-default="null">
+                <div class="form-input-wrapper ">  
+                  <textarea name="data[message]" placeholder="Message" data-required="true" class="form-control"></textarea>
+                </div>
+              </div>
+            </div>
+
+            {% include "forms/fields/formname/formname.html.twig" %}
+
+            {% block inner_markup_fields_end %}{% endblock %}
+
+            {% block inner_markup_buttons_start %}
+            <div class="form-group text-center">
+            {% endblock %}
+
+            {% for button in form.buttons %}
+                {% if button.outerclasses is defined %}<div class="{{ button.outerclasses }}">{% endif %}
+                    {% if button.url %}
+                        <a href="{{ button.url starts with 'http' ? button.url : url(button.url) }}">
+                    {% endif %}
+                    <button
+                          {% if button.id %}id="{{ button.id }}"{% endif %}
+                          {% block button_classes %}
+                          class="{{ button.classes|default('button') }}"
+                          {% endblock %}
+                          {% if button.disabled %}disabled="disabled"{% endif %}
+                          type="{{ button.type|default('submit') }}"
+                      >
+                          {{ button.value|t|default('Submit') }}
+                    </button>
+                    {% if button.url %}
+                        </a>
+                    {% endif %}
+                {% if button.outerclasses is defined %}</div>{% endif %}
+            {% endfor %}
+
+            {% block inner_markup_buttons_end %}
+            </div>
+
+            {% for field in form.fields %}
+              {% set value = form.value(field.name) %}
+              {% if field.type == 'captcha' %}
+                  {% include "forms/fields/#{field.type}/#{field.type}.html.twig" ignore missing %}
+              {% endif %}
+            {% endfor %}    
+
+            {% endblock %}
+
+            {{ nonce_field('form', 'form-nonce')|raw }}
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

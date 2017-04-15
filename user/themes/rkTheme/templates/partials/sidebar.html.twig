@@ -1,0 +1,32 @@
+{% set feed_url = blog.url == '/' or blog.url == base_url_relative ? (base_url_relative~'/'~blog.slug) : blog.url %}
+{% set new_base_url = blog.url == '/' ? '' : blog.url %}
+
+<div class="col-md-3 col-md-offset-1">
+<div class="sidebar hidden-sm hidden-xs">
+  <div class="widget">
+    <h6 class="upper">Categories</h6>
+    <ul class="nav">
+        {% include 'partials/categorylist.html.twig' with {'base_url':'/content', 'taxonomy':'category'} %}
+    </ul>
+  </div>
+  <!-- end of widget        -->
+  <div class="widget">
+    <h6 class="upper">Popular Tags</h6>
+    <div class="tags clearfix">
+        {% include 'partials/taxonomylist.html.twig' with {'base_url':'/content', 'taxonomy':'tag'} %}
+    </div>
+  </div>
+  <!-- end of widget      -->
+  <div class="widget">
+    <h6 class="upper">Latest Posts</h6>
+    <ul class="nav">
+      {% for p in page.find('/content').children if p != page %}
+        <li><a href="{{ p.url }}">{{ p.title }}<i class="ti-arrow-right"></i><span>{{ p.date|date("j F") }} {{ p.date|date("Y") }}</span></a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <!-- end of widget          -->
+</div>
+<!-- end of sidebar-->
+</div>

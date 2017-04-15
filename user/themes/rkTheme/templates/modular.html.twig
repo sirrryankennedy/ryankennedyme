@@ -1,0 +1,22 @@
+{% extends 'partials/modular_base.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+
+{% block bottom %}
+    {{ parent() }}
+{% endblock %}
+
+{% block header_navigation %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    {{ page.content }}
+    {% for module in page.collection() %}
+        {{ module.content }}
+    {% endfor %}
+
+{% endblock %}

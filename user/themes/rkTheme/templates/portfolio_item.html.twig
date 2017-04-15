@@ -1,0 +1,125 @@
+{% extends 'partials/base.html.twig' %}
+{% block content %}
+<section class="page-title parallax">
+  <div data-parallax="scroll" data-image-src="images/bg/14.jpg" class="parallax-bg"></div>
+  <div class="parallax-overlay">
+    <div class="centrize">
+      <div class="v-center">
+        <div class="container">
+          <div class="title center">
+            <h1 class="upper">{{ page.title }}<span class="red-dot"></span></h1>
+            <h4>{{ page.header.tagline }}</h4>
+            <hr>
+          </div>
+        </div>
+        <!-- end of container-->
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="project-detail">
+          <p><strong>Link:</strong><a target="_blank" href="{{ page.header.link }}">{{ page.header.link }}</a></p>
+          <p><strong>Date:</strong>{{ page.date|date("j F") }} {{ page.date|date("Y") }}</p>
+          <p><strong>Type:</strong>{% for category in page.taxonomy.category %}{{ category }} {% endfor %}</p>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <p>{{ page.header.para_1 }}</p>
+      </div>
+      <div class="col-sm-4">
+        <p>{{ page.header.para_2 }}</p>
+      </div>
+    </div>
+    <!-- end of row-->
+  </div>
+</section>
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 img-side img-left">
+        <div class="img-holder">
+          <img src="images/portfolio/single-1.jpg" alt="" class="bg-img">
+        </div>
+      </div>
+    </div>
+    <!-- end of row            -->
+  </div>
+  <!-- end of container-->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 col-md-offset-7 col-sm-6 col-sm-offset-6">
+        <div class="title">
+          <h4 class="upper mb-10">{{ page.header.sec_1_desc }}</h4>
+          <h3 class="upper fw-400">{{ page.header.sec_1_title }}<span class="red-dot"></span></h3>
+          <hr>
+        </div>
+        <p class="mb-25 alt-paragraph">{{ page.header.sec_1 }}</p>
+      </div>
+    </div>
+    <!-- end of row        -->
+  </div>
+  <!-- end of container-->
+</section>
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 img-side img-right">
+        <div class="img-holder">
+          <img src="images/portfolio/single-2.jpg" alt="" class="bg-img">
+        </div>
+      </div>
+    </div>
+    <!-- end of row              -->
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 col-sm-6 txt-sm-right txt-md-right">
+        <div class="title">
+          <h4 class="upper mb-10">{{ page.header.sec_2_desc }}</h4>
+          <h3 class="upper fw-400">{{ page.header.sec_2_title }}<span class="red-dot"></span></h3>
+          <hr>
+        </div>
+        <p class="mb-25 alt-paragraph">{{ page.header.sec_2 }}</p>
+      </div>
+    </div>
+    <!-- end of row-->
+  </div>
+  <!-- end of container-->
+</section>
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 img-side img-left">
+        <div class="img-holder">
+          <img src="images/portfolio/single-3.jpg" alt="" class="bg-img">
+        </div>
+      </div>
+    </div>
+    <!-- end of row              -->
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 col-md-offset-7 col-sm-6 col-sm-offset-6">
+        <div class="title">
+          <h4 class="upper mb-10">{{ page.header.sec_3_desc }}</h4>
+          <h3 class="upper fw-400">{{ page.header.sec_3_title }}<span class="red-dot"></span></h3>
+          <hr>
+        </div>
+        <p class="mb-25 alt-paragraph">{{ page.header.sec_3 }}</p>
+      </div>
+    </div>
+    <!-- end of row-->
+  </div>
+  <!-- end of container-->
+</section>
+<section class="controllers p-0">
+  <div class="container">
+    <div class="projects-controller"><a href="#" class="prev"><span><i class="ti-arrow-left"></i>Previous</span></a><a href="#" class="all"><span><i class="ti-layout-grid2"></i></span></a><a href="#" class="next"><span>Next<i class="ti-arrow-right"></i></span></a>
+    </div>
+  </div>
+</section>
+{% endblock %}

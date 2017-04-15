@@ -1,0 +1,54 @@
+{% set theme_config = attribute(config.themes, config.system.pages.theme) %}
+<!DOCTYPE html>
+<html lang="{{ grav.language.getLanguage ?: 'en' }}">
+<head>
+{% block head %}
+    <meta charset="utf-8" />
+    <title>{% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
+    {% include 'partials/metadata.html.twig' %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/png" href="{{ url('theme://images/favicon.png') }}" />
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Halant:300,400" rel="stylesheet" type="text/css">
+
+    {% block stylesheets %}
+        {% do assets.addCss('theme://css/pure-0.5.0/bundle.css', 103) %}
+        {% do assets.addCss('theme://css/style.css', 100) %}
+        {% do assets.addCss('theme://css/font-awesome.min.css', 100) %}
+
+    {% endblock %}
+    {{ assets.css() }}
+
+    {% block javascripts %}
+        {% do assets.addJs('jquery', 101) %}
+        {% do assets.addJs('theme://js/bundle.js', {'group':'bottom'}) %}
+        {% do assets.addJs('https://maps.googleapis.com/maps/api/js?v=3.exp') %}
+        {% do assets.addJs('theme://js/main.js', {'group':'bottom'}) %}
+    {% endblock %}
+    {{ assets.js() }}
+{% endblock head %}
+
+</head>
+<body>
+
+    {% block header %}
+        {% include "partials/header.html.twig" %}
+    {% endblock %}
+
+    {% block showcase %}{% endblock %}
+
+    {% block body %}
+
+    {% endblock %}
+
+    {% block footer %}
+        {% include "partials/footer.html.twig" %}
+    {% endblock %}
+
+    {% block bottom %}
+        {{ assets.js('bottom') }}
+    {% endblock %}
+</body>
+</html>

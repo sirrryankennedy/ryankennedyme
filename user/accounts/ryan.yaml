@@ -1,0 +1,11 @@
+email: ryan@ryankennedy.me
+fullname: 'Ryan Kennedy'
+title: Administrator
+state: enabled
+access:
+  admin:
+    login: true
+    super: true
+  site:
+    login: true
+hashed_password: $2y$10$5dBzWbQ1AJ18UDA2EpCzt.mFFrqlmiIrPSqvh8MK4iJPlRMJyjhpC
