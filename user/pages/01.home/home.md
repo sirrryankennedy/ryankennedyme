@@ -1,6 +1,7 @@
 ---
 title: Home
 
+header_var: home
 content:
     items: '@self.descendants'
     limit: 5

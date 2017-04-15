@@ -51,13 +51,8 @@
     </div>
     <!-- End Preloader-->
 
-    {% block header %}
-        <header id="topnav">
-            {% include "partials/header.html.twig" %}
-        </header>
-    {% endblock %}
-{#     {% block header %}
-        {% if page.url == {{ base_url }} %}
+     {% block header %}
+        {% if page.header.header_var == 'home' %}
                 <header id="topnav">
                     {% include "partials/header.html.twig" %}
                 </header>
@@ -66,7 +61,7 @@
                     {% include "partials/header_alt.html.twig" %}
                 </header>      
         {% endif %} 
-    {% endblock %} #}
+    {% endblock %}
 
     {% block content %}
     {% endblock %}
