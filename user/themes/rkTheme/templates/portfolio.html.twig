@@ -24,18 +24,18 @@
   <div class="container">
     <ul id="filters">
       <li data-filter="*" class="active">All</li>
-      <li data-filter=".branding">Websites</li>
-      <li data-filter=".graphic">Automation</li>
-      <li data-filter=".automation">Server Admin</li>
-      <li data-filter=".video">Scraping</li>
+      <li data-filter=".websites">Websites</li>
+      <li data-filter=".automation">Automation</li>
+      <li data-filter=".serveradmin">Server Admin</li>
+      <li data-filter=".scraping">Scraping</li>
     </ul>
     <!-- end of portfolio filters-->
     <div id="works" class="three-col">
     {% for p in portfolio_collection %}
-      <div class="work-item{% for category in p.taxonomy.category %} {{ category }} {% endfor %}">
+      <div class="work-item{% for category in p.taxonomy.section %} {{ category }} {% endfor %}">
         <div class="work-detail">
           <a href="{{ p.url }}">
-            <img src="{{ url('theme://images/portfolio/1.jpg') }}" alt="">
+            <img src="{{ p.media['portfolioimgthumb.jpg'].url }}" alt="">
             <div class="work-info">
               <div class="centrize">
                 <div class="v-center">
