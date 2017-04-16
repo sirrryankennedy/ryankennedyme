@@ -118,7 +118,7 @@
 </section>
 <section class="controllers p-0">
   <div class="container">
-    <div class="projects-controller"><a href="#" class="prev"><span><i class="ti-arrow-left"></i>Previous</span></a><a href="#" class="all"><span><i class="ti-layout-grid2"></i></span></a><a href="#" class="next"><span>Next<i class="ti-arrow-right"></i></span></a>
+    <div class="projects-controller">{% if not page.isFirst %}<a href="{{ page.nextSibling.url }}" class="prev"><span><i class="ti-arrow-left"></i>Previous</span></a>{% endif %}<a href="{{ base_url }}/portfolio" class="all"><span><i class="ti-layout-grid2"></i></span></a>{% if not page.isLast %}<a href="{{ page.prevSibling.url }}" class="next"><span>Next<i class="ti-arrow-right"></i></span></a>{% endif %}
     </div>
   </div>
 </section>
