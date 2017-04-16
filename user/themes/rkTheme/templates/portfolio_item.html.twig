@@ -24,7 +24,7 @@
         <div class="project-detail">
           <p><strong>Link:</strong><a target="_blank" href="{{ page.header.link }}">{{ page.header.link }}</a></p>
           <p><strong>Date:</strong>{{ page.date|date("j F") }} {{ page.date|date("Y") }}</p>
-          <p><strong>Type:</strong>{% for category in page.taxonomy.category %}{{ category }} {% endfor %}</p>
+          <p style="text-transform: capitalize;"><strong>Type:</strong>{% for category in page.taxonomy.section %}{{ category }} {% endfor %}</p>
         </div>
       </div>
       <div class="col-sm-4">

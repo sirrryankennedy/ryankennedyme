@@ -129,7 +129,7 @@
 	    <div class="section-content">
 	      <div class="row">
 	        <div class="col-md-8 col-md-offset-2">
-        	{% for p in page.find('/content').children.order('date', 'desc').slice(0, 4) if p != page %}
+        	{% for p in page.find('/content').children.order('date', 'desc').slice(0, 3) if p != page %}
 	          <div class="blog-post">
 	            <div class="post-body">
 	              <h3 class="serif"><a href="{{ p.url }}">{{ p.title }}</a></h3>
